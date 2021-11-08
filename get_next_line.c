@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/10/27 20:20:39 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/08 16:19:28 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 	char		*result;
 	ssize_t		size;
 
-	if (fd < 0 || fd > 1023)
+	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	result = ft_initialize(buffer);
 	if (ft_end_of_line(result) == 1)
