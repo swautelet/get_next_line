@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/08 19:20:47 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/08 20:13:52 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(char *str)
 	size_t	l;
 
 	l = 1;
-	while (str[l] && str[l] != '\n')
+	while (str[l])
 		l++;
 	return (l);
 }
