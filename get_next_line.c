@@ -6,20 +6,11 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/08 16:19:28 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:34:03 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"get_next_line.h"
-
-char	*ft_first(void)
-{
-	char	*result;
-
-	result = malloc(sizeof(char));
-	*result = '\0';
-	return (result);
-}
 
 char	*get_next_line(int fd)
 {
@@ -36,6 +27,13 @@ char	*get_next_line(int fd)
 	while (size == BUFFER_SIZE)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
+		if (size == 0)
+			return (result);
+		if (size < 0)
+		{
+			free (result);
+			return (NULL);
+		}
 		result = ft_straddback(result, buffer, size);
 		if (ft_end_of_line(result) == 1)
 			return (result);

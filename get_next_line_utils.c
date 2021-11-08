@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/10/27 14:22:48 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/08 19:20:47 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlen(char *str)
 {
 	size_t	l;
 
-	l = 0;
+	l = 1;
 	while (str[l] && str[l] != '\n')
 		l++;
 	return (l);
@@ -32,7 +32,7 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	newresult = malloc(sizeof(char) * (size + ft_strlen(result) + 1));
 	if (!newresult)
 	{
-		free (newresult);
+		free (result);
 		return (NULL);
 	}
 	while (result[i])
@@ -73,15 +73,11 @@ char	*ft_initialize(char *buffer)
 	int		l;
 
 	i = 0;
-	if (buffer == NULL)
-	{
-		new = malloc(sizeof(char));
-		new[i] = '\0';
-		return (new);
-	}
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	new = malloc(ft_strlen(&buffer[i]) * sizeof(char));
+	if (!new)
+		return (NULL);
 	i++;
 	l = 0;
 	while (buffer[i + l])
