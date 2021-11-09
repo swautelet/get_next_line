@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/08 20:13:52 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:06:18 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,11 @@ char	*ft_initialize(char *buffer)
 		buffer[l] = buffer[i + l];
 		l++;
 	}
-	buffer[l] = '\0';
+	while (buffer[l])
+	{
+		buffer[l] = '\0';
+		l++;
+	}
 	new[l] = '\0';
 	return (new);
 }

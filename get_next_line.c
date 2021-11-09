@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/09 17:13:56 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/09 18:03:31 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	if (ft_end_of_line(result) == 1)
 		return (result);
 	size = read(fd, buffer, BUFFER_SIZE);
-	if (size <= 0)
+	if (size <= 0 && result[0] == '\0')
 	{
 		free (result);
 		return (NULL);
