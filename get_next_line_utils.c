@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
+/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/09 19:07:48 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/09 21:26:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	}
 	free (result);
 	l = 0;
-	while (buffer[l])
+	while (buffer[l] && size - l > 0)
 	{
 		newresult[i + l] = buffer[l];
 		l++;
@@ -75,7 +75,7 @@ char	*ft_initialize(char *buffer)
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	new = malloc(ft_strlen(&buffer[i]) * sizeof(char));
+	new = malloc((ft_strlen(&buffer[i]) + 1) * sizeof(char));
 	if (!new)
 		return (NULL);
 	i++;
