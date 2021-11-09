@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/09 18:06:18 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/09 18:15:57 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,7 @@ char	*ft_initialize(char *buffer)
 		buffer[l] = buffer[i + l];
 		l++;
 	}
-	while (buffer[l])
-	{
-		buffer[l] = '\0';
-		l++;
-	}
+	buffer[l] = '\0';
 	new[l] = '\0';
 	return (new);
 }
