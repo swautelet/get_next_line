@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/09 18:14:01 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/09 18:45:03 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*result;
-	ssize_t		size;
+	static char			buffer[BUFFER_SIZE + 1];
+	char				*result;
+	static ssize_t		size;
 
 	if (fd < 0 || fd > FOPEN_MAX)
 		return (NULL);
 	result = ft_initialize(buffer);
 	if (ft_end_of_line(result) == 1)
+		return (result);
+	if (size == 0 && buffer[0] != '\0')
 		return (result);
 	size = read(fd, buffer, BUFFER_SIZE);
 	if (size <= 0)
@@ -37,7 +39,5 @@ char	*get_next_line(int fd)
 			return (result);
 		size = read(fd, buffer, BUFFER_SIZE);
 	}
-	if (size == 0)
-		return (result);
 	return (result);
 }
