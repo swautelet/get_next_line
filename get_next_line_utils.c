@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 16:59:06 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/10 17:03:43 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 
 void	ft_delbuffer(char *buffer, int l)
 {
-	while(buffer[l])
+	while (buffer[l])
 	{
 		buffer[l] = '\0';
 		l++;
@@ -37,18 +37,15 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	ssize_t	i;
 	ssize_t	l;
 
-	i = 0;
+	i = -1;
 	newresult = malloc(sizeof(char) * (size + ft_strlen(result) + 1));
 	if (!newresult)
 	{
 		free (result);
 		return (NULL);
 	}
-	while (result[i])
-	{
+	while (result[++i])
 		newresult[i] = result[i];
-		i++;
-	}
 	free (result);
 	l = 0;
 	while (buffer[l] && size - l > 0)
