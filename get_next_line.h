@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:29 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 17:02:24 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/10 19:48:37 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <stdio.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+# if BUFFER_SIZE < -1
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE -1
 # endif
 
 char	*get_next_line(int fd);
