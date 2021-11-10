@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 17:03:43 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/10 20:03:34 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	ft_end_of_line(char *str)
 
 char	*ft_initialize(char *buffer)
 {
-	char	*new;
-	int		i;
-	int		l;
+	char		*new;
+	ssize_t		i;
+	ssize_t		l;
 
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
