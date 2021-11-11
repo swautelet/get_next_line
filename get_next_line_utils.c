@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 18:10:41 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/11 20:24:52 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,8 @@ size_t	ft_strlen(char *str)
 			break ;
 		}
 	}
-	l += 2;
+	l++;
 	return (l);
-}
-
-void	ft_delbuffer(char *buffer, int l)
-{
-	while (buffer[l])
-	{
-		buffer[l] = '\0';
-		l++;
-	}
 }
 
 char	*ft_straddback(char *result, char *buffer, ssize_t size)
@@ -54,15 +45,21 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	while (result[++i])
 		newresult[i] = result[i];
 	free (result);
-	l = 0;
-	while (buffer[l] && size - l > 0)
+	l = -1;
+	while (buffer[++l] && size - l > 0)
 	{
 		newresult[i + l] = buffer[l];
-		l++;
+		if (buffer[l] == '\n')
+		{
+			buffer[l++] = -1;
+			break ;
+		}
+		buffer[l] = -1;
 	}
-	if (size == l)
-		ft_delbuffer(buffer, l);
 	newresult[i + l] = '\0';
+	if (size == l)
+		while (buffer[l])
+			buffer[l++] = -1;
 	return (newresult);
 }
 
@@ -71,11 +68,7 @@ int	ft_end_of_line(char *str)
 	while (*str)
 	{
 		if (*str == '\n')
-		{
-			str++;
-			*str = '\0';
 			return (1);
-		}
 		str++;
 	}
 	return (0);
@@ -88,22 +81,25 @@ char	*ft_initialize(char *buffer)
 	ssize_t		l;
 
 	i = -1;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] && buffer[i] == -1)
 		i++;
 	new = malloc((ft_strlen(&buffer[i])) * sizeof(char));
 	if (!new)
 		return (NULL);
+	if (!buffer[i])
+	{
+		new[0] = '\0';
+		return (new);
+	}
 	i++;
 	l = 0;
 	while (buffer[i + l])
 	{
 		new[l] = buffer[i + l];
-		buffer[l] = buffer[i + l];
 		l++;
 		if (buffer[i + l - 1] == '\n')
 			break ;
 	}
 	new[l] = '\0';
-	ft_delbuffer(buffer, l);
 	return (new);
 }

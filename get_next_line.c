@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 17:56:42 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/11 20:13:29 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*get_next_line(int fd)
 		free (result);
 		return (NULL);
 	}
+	result = gnl(result, buffer[fd], size, fd);
 	return (result);
 }
