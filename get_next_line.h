@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 22:11:29 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 17:46:05 by swautele         ###   ########.fr       */
+/*   Created: 2021/11/11 22:01:20 by simonwautel       #+#    #+#             */
+/*   Updated: 2021/11/11 22:01:21 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
