@@ -6,37 +6,44 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:55 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 19:47:38 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:56:42 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*gnl(char *result, char *buffer, int size, int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*result;
-	ssize_t		size;
-
-	if (fd < 0 || fd > FOPEN_MAX)
-		return (NULL);
-	result = ft_initialize(buffer);
-	if (ft_end_of_line(result) == 1)
-		return (result);
-	size = read(fd, buffer, BUFFER_SIZE);
-	if (size == 0 && result[0] != '\0')
-		return (result);
-	if (size <= 0)
-	{
-		free (result);
-		return (NULL);
-	}
 	while (size > 0)
 	{
 		result = ft_straddback(result, buffer, size);
 		if (ft_end_of_line(result) == 1)
 			return (result);
 		size = read(fd, buffer, BUFFER_SIZE);
+	}
+	return (result);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
+	char		*result;
+	ssize_t		size;
+
+	if (fd < 0 || fd > FOPEN_MAX)
+		return (NULL);
+	result = ft_initialize(buffer[fd]);
+	if (!result)
+		return (NULL);
+	if (ft_end_of_line(result) == 1)
+		return (result);
+	size = read(fd, buffer[fd], BUFFER_SIZE);
+	if (size == 0 && result[0] != '\0')
+		return (result);
+	if (size <= 0)
+	{
+		free (result);
+		return (NULL);
 	}
 	return (result);
 }

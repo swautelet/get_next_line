@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:36 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 20:03:34 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:10:41 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@ size_t	ft_strlen(char *str)
 {
 	size_t	l;
 
-	l = 1;
-	while (str[l])
-		l++;
+	l = -1;
+	while (str[++l])
+	{
+		if (str[l] == '\n')
+		{
+			l++;
+			break ;
+		}
+	}
+	l += 2;
 	return (l);
 }
 
@@ -38,7 +45,7 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	ssize_t	l;
 
 	i = -1;
-	newresult = malloc(sizeof(char) * (size + ft_strlen(result) + 1));
+	newresult = malloc(sizeof(char) * (size + ft_strlen(result)));
 	if (!newresult)
 	{
 		free (result);
@@ -80,10 +87,10 @@ char	*ft_initialize(char *buffer)
 	ssize_t		i;
 	ssize_t		l;
 
-	i = 0;
+	i = -1;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	new = malloc((ft_strlen(&buffer[i]) + 1) * sizeof(char));
+	new = malloc((ft_strlen(&buffer[i])) * sizeof(char));
 	if (!new)
 		return (NULL);
 	i++;
@@ -93,12 +100,10 @@ char	*ft_initialize(char *buffer)
 		new[l] = buffer[i + l];
 		buffer[l] = buffer[i + l];
 		l++;
+		if (buffer[i + l - 1] == '\n')
+			break ;
 	}
 	new[l] = '\0';
-	while (l <= BUFFER_SIZE + 1)
-	{
-		buffer[l] = '\0';
-		l++;
-	}
+	ft_delbuffer(buffer, l);
 	return (new);
 }

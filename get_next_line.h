@@ -6,7 +6,7 @@
 /*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 22:11:29 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/10 20:10:37 by swautele         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:46:05 by swautele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_initialize(char *buffer);
 char	*ft_first(void);
 char	*ft_eof(char *result);
 void	ft_delbuffer(char *buffer, int l);
+char	*gnl(char *result, char *buffer, int size, int fd);
 
 #endif
