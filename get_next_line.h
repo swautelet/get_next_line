@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:01:20 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 22:01:21 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/11 22:42:11 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size);
 size_t	ft_strlen(char *str);
 int		ft_end_of_line(char *str);
 char	*ft_initialize(char *buffer);
-char	*ft_first(void);
-char	*ft_eof(char *result);
-void	ft_delbuffer(char *buffer, int l);
 char	*gnl(char *result, char *buffer, int size, int fd);
+void	ft_straddback2(char *newresult, char *buffer, ssize_t i, ssize_t size);
 
 #endif

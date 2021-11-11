@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:01:09 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 22:01:10 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/11 22:41:51 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,10 @@ size_t	ft_strlen(char *str)
 	return (l);
 }
 
-char	*ft_straddback(char *result, char *buffer, ssize_t size)
+void	ft_straddback2(char *newresult, char *buffer, ssize_t i, ssize_t size)
 {
-	char	*newresult;
-	ssize_t	i;
 	ssize_t	l;
 
-	i = -1;
-	newresult = malloc(sizeof(char) * (size + ft_strlen(result)));
-	if (!newresult)
-	{
-		free (result);
-		return (NULL);
-	}
-	while (result[++i])
-		newresult[i] = result[i];
-	free (result);
 	l = -1;
 	while (buffer[++l] && size - l > 0)
 	{
@@ -60,6 +48,24 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size)
 	if (size == l)
 		while (buffer[l])
 			buffer[l++] = -1;
+}
+
+char	*ft_straddback(char *result, char *buffer, ssize_t size)
+{
+	char	*newresult;
+	ssize_t	i;
+
+	i = -1;
+	newresult = malloc(sizeof(char) * (size + ft_strlen(result)));
+	if (!newresult)
+	{
+		free (result);
+		return (NULL);
+	}
+	while (result[++i])
+		newresult[i] = result[i];
+	free (result);
+	ft_straddback2(newresult, buffer, i, size);
 	return (newresult);
 }
 
@@ -96,8 +102,7 @@ char	*ft_initialize(char *buffer)
 	{
 		new[l] = buffer[i + l];
 		buffer[i + l] = -1;
-		l++;
-		if (new[l - 1] == '\n')
+		if (new[l++] == '\n')
 			break ;
 	}
 	new[l] = '\0';

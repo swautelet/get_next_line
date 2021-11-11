@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swautele <swautele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 22:11:29 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 17:46:05 by swautele         ###   ########.fr       */
+/*   Created: 2021/11/11 22:18:59 by simonwautel       #+#    #+#             */
+/*   Updated: 2021/11/11 22:42:01 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -33,9 +33,7 @@ char	*ft_straddback(char *result, char *buffer, ssize_t size);
 size_t	ft_strlen(char *str);
 int		ft_end_of_line(char *str);
 char	*ft_initialize(char *buffer);
-char	*ft_first(void);
-char	*ft_eof(char *result);
-void	ft_delbuffer(char *buffer, int l);
 char	*gnl(char *result, char *buffer, int size, int fd);
+void	ft_straddback2(char *newresult, char *buffer, ssize_t i, ssize_t size);
 
 #endif
