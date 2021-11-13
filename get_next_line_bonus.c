@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:01:05 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/11 22:18:37 by simonwautel      ###   ########.fr       */
+/*   Updated: 2021/11/13 13:35:24 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*gnl(char *result, char *buffer, int size, int fd)
 	while (size > 0)
 	{
 		result = ft_straddback(result, buffer, size);
+		if (!result)
+			return (NULL);
 		if (ft_end_of_line(result) == 1)
 			return (result);
 		size = read(fd, buffer, BUFFER_SIZE);
