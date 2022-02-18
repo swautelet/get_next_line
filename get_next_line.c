@@ -6,7 +6,7 @@
 /*   By: simonwautelet <simonwautelet@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:01:05 by simonwautel       #+#    #+#             */
-/*   Updated: 2021/11/13 13:19:39 by simonwautel      ###   ########.fr       */
+/*   Updated: 2022/02/15 20:30:45 by simonwautel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*gnl(char *result, char *buffer, int size, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[BUFFER_SIZE + 1] = {0};
 	char		*result;
 	ssize_t		size;
 
